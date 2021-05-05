@@ -1,45 +1,63 @@
 /*
-Pencil Count
-Nila uses pencils to write at school and at home. When she was in her 1st standard, her parents bought her one pencil. In her 2nd standard, she needed 5 pencils, and in 3rd standard, she needed 14 pencils and so on. How many pencils does she get from the provided standard?
-Note : If the input given is not between 1 to 12  then the output should be "Invalid Standard"
-
+Pass and Fail Count
+Ram has passed in certain subjects and failed in a few. Write a program to count the no of subjects he passed in and the no of subjects he has failed in. Marks scored below 50 is considered as failed. If Ram has passed in all the subjects print "Ram passed in all subjects" and if failed print "Ram failed in all subjects".
+Assume maximum size of array is 20,
 Sample Input 1:
-Enter the standard: 4
+Enter the no of subjects:
+6
+60
+70
+80
+90
+45
+49
 Sample Output 1:
-Nila gets 30 pencils
+Ram passed in 4 subjects and failed in 2 subjects
 
 Sample Input 2:
-Enter the standard: 5
+Enter the no of subjects:
+0
 Sample Output 2:
-Nila gets 55 pencils
+Invalid input range
 
 Sample Input 3:
-Enter the standard:14
+Enter the no of subjects:
+-2
 Sample Output 3:
-Invalid Standard
+Invalid input range
 */
 
-import java.io.*;
 import java.util.*;
 class Count
 {
     public static void main (String[] args) {
         Scanner sc=new Scanner(System.in);
-        System.out.println("Enter the standard:");
-        int std=sc.nextInt();
-        if(std<1||std>12)
-        {
-            System.out.println("Invalid Standard");
+        System.out.println("Enter the no of subjects:");
+        int num=sc.nextInt();
+        if(num<=0){
+            System.out.println("Invalid input range");
             System.exit(0);
         }
-        else{
-            System.out.println("Nila gets "+(std*std+prev(std-1))+" pencils");
+        int[] sub=new int[20];
+        int pass_count=0,fail_count=0;
+        for(int i=0;i<num;i++)
+        {
+            sub[i]=sc.nextInt();
+            if(sub[i]>=50)
+                pass_count++;
+            else 
+                fail_count++;
         }
-    }
-    private static int prev(int std)
-    {
-        if(std>0)
-            return std*std+prev(std-1);
-        return 0;
+        if(pass_count==num)
+        {
+            System.out.println("Ram passed in all subjects");
+        }
+        else if(fail_count==num)
+        {
+            System.out.println("Ram failed in all subjects");
+        }
+        else{
+            System.out.println("Ram passed in "+pass_count+" subjects and failed in "+fail_count+" subjects");
+        }
     }
 }
