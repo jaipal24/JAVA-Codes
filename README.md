@@ -1,1 +1,1 @@
-# This Repository contains the collection of java programs that i have practiced.
+# This Repository contains the collection of java programs.
